@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./server
+    ports:
+      - '8000:8000'
+    environment:
+      - PORT=8000
+      - DB_USERNAME=ishtiyak
+      - DB_PASSWORD=Kota@2020
+    volumes:
+      - ./server:/app
+    depends_on:
+      - mongo
+  frontend:
+    build: ./client
+    ports:
+      - '3000:80'
+    depends_on:
+      - backend
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
