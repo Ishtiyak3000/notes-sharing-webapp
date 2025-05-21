@@ -51,9 +51,6 @@ pipeline {
 
             echo "Starting Minikube..."
             sh 'minikube start --driver=docker'
-
-            echo "Applying Kubernetes resources..."
-            sh 'kubectl apply -f kubernetes/'
            }
         }
      }
