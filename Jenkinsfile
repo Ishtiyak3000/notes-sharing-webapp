@@ -38,11 +38,7 @@ pipeline {
         }
           stage('Starting Minikube Cluster') {
     steps {
-          sh """
-echo 'Kota@2020' | sudo -S minikube start --driver=docker
-"""
-
-          
+               sh 'sudo minikube start'
       }
           }
         stage('Deploy to Kubernetes') {
