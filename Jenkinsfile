@@ -7,19 +7,7 @@ pipeline {
      
 
     stages {
-        stage('Setup Permissions') {
-            steps {
-                script {
-                    sh '''
-                    echo "Granting permissions to the Jenkins user.."
-                    sudo usermod -aG docker jenkins
-                    sudo mkdir -p /var/lib/jenkins/.ssh
-                    sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
-                    sudo chmod 700 /var/lib/jenkins/.ssh
-                    '''
-                }
-            }
-        }
+      
       
         stage('Checkout') {
             steps {
@@ -49,11 +37,11 @@ pipeline {
                 sh 'docker compose push'
             }
         }
-          stage('Starting Minikube Cluster') {
-    steps {
-               sh 'minikube start --driver=docker'
-      }
-          }
+    //       stage('Starting Minikube Cluster') {
+    // steps {
+    //            sh 'minikube start --driver=docker'
+    //   }
+    //       }
         stage('Deploy to Kubernetes') {
     steps {
           sh 'kubectl apply -f backend-deployment.yaml'
