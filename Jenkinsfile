@@ -36,6 +36,11 @@ pipeline {
                 sh 'docker compose push'
             }
         }
+          stage('Starting Minikube Cluster') {
+    steps {
+          sh 'minikube start --driver=docker'
+          
+     }
         stage('Deploy to Kubernetes') {
     steps {
           sh 'kubectl apply -f backend-deployment.yaml'
