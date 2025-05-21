@@ -38,7 +38,7 @@ pipeline {
         }
           stage('Starting Minikube Cluster') {
     steps {
-               sh 'sudo minikube start'
+               sh 'minikube start --driver=docker'
       }
           }
         stage('Deploy to Kubernetes') {
