@@ -38,7 +38,7 @@ pipeline {
         }
           stage('Starting Minikube Cluster') {
     steps {
-          sh 'minikube start --driver=docker'
+          sh 'sudo minikube start --driver=docker'
           
       }
           }
